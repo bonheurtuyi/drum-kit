@@ -9,6 +9,7 @@ for (let i = 0; i < numberOfDrumsButton.length; i++) {
 
         const buttonInnerHTML = this.innerHTML;
         playDrum(buttonInnerHTML);
+        addAnimation(buttonInnerHTML);
 
     });
 }
@@ -17,6 +18,7 @@ for (let i = 0; i < numberOfDrumsButton.length; i++) {
 document.addEventListener("keydown", function (event) {
     const buttonPress = event.key;
     playDrum(buttonPress);
+    addAnimation(buttonPress);
 })
 
 //Play drum sound function
@@ -63,6 +65,14 @@ function playDrum(button){
     }
 }
 
+//Add animation to pressed or clicked drum button
+function addAnimation(currentKey){
+    let activeButton = document.querySelector("." + currentKey);
+    activeButton.classList.add("pressed");
 
+    setTimeout(function () {
+        activeButton.classList.remove("pressed");
+    }, 100);
+}
 
 
